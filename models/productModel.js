@@ -21,4 +21,4 @@ const productSchema = new mongoose.Schema({
   MetaKeywords: String
 });
 
-module.exports = mongoose.model("Product", productSchema, "Product");
+module.exports = mongoose.model("product", productSchema, "product");
