@@ -22,32 +22,33 @@
                             <i class="material-icons">dashboard</i>Mặt hàng
                         </a>
                         <div class="dropdown-menu dropdown-with-icons">
-                            <a href="/categories/sport" class="dropdown-item">
+                            <a href="/categories/Thể%20thao" class="dropdown-item">
                                 Thể thao
                             </a>
-                            <a href="/categories/fashion" class="dropdown-item">
+                            <a href="/categories/Thời%20trang" class="dropdown-item">
                                 Thời trang
                             </a>
-                            <a href="/categories/electronic" class="dropdown-item">
+                            <a href="/categories/Điện%20tử" class="dropdown-item">
                                 Điện tử
                             </a>
-                            <a href="/categories/transport" class="dropdown-item">
+                            <a href="/categories/Phương%20tiện" class="dropdown-item">
                                 Phương tiện
                             </a>
-                            <a href="/categories/book" class="dropdown-item">
+                            <a href="/categories/Sách" class="dropdown-item">
                                 Sách
                             </a>
-                            <a href="/categories/toolkit" class="dropdown-item">
+                            <a href="/categories/Phụ%20kiện%20-%20thiết%20bị%20số" class="dropdown-item">
                                 Phụ kiện - thiết bị số
                             </a>
-                            <a href="/categories/food" class="dropdown-item">
+                            <a href="/categories/Thực%20phẩm" class="dropdown-item">
                                 Thực phẩm
                             </a>
-                            <a href="/categories/lifestyle" class="dropdown-item">
+                            <a href="/categories/Nhà%20cửa%20-%20đời%20sống" class="dropdown-item">
                                 Nhà cửa - đời sống
                             </a>
                         </div>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/cart" onclick="scrollToDownload()">
                             <i class="material-icons">shopping_cart</i> Giỏ hàng
@@ -130,21 +131,20 @@
                 <div class="ui link cards centered grid">
                     {{#each carts}}
                     <div class="card">
-
                         <div class="image">
-
-                            <img src={{this.image}}>
+                            <img src={{this.Images}}>
                         </div>
 
                         <div class="content">
-                            <a href="/product">
-                                <div class="header">{{this.name}}</div>
+                            <a href="/product/{{this._id}}">
+                                <div class="header">{{this.Name}}</div>
                             </a>
                             <div class="meta">
-                                <a href="/categories/toolkit">{{this.type}}</a>
+                                <a href="/categories/{{this.Category}}">{{this.Category}}</a>from
+                                <a href="/CreatedBy/{{this.CreatedBy}}">{{this.CreatedBy}}</a>
                             </div>
                             <div class="description">
-                                {{this.price}}
+                                {{this.Price}}
                             </div>
                         </div>
                         <div class="extra content">
@@ -179,6 +179,7 @@
                 }, 1000);
             }
         }
-
     </script>
+
+    <script src="js/chooseProduct.js"></script>
 </body>

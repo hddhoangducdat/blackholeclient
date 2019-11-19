@@ -1,5 +1,7 @@
 var express = require("express");
 var path = require("path");
+var mongoose = require("mongoose");
+var dotenv = require("dotenv");
 var favicon = require("static-favicon");
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
@@ -16,8 +18,10 @@ var cartPage = require("./routes/cartPage");
 var forgotPassword = require("./routes/forgotPassword");
 var categories = require("./routes/categories");
 var product = require("./routes/product");
+var createdBy = require("./routes/createdBy");
 
 var app = express();
+dotenv.config();
 
 // view engine setup
 app.engine(
@@ -36,8 +40,17 @@ app.use(favicon());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+const db = mongoose.connect(
+  process.env.CONNECTION_STRING,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("db connected !");
+  }
+);
 
 app.use("/", routes);
 app.use("/signup", signup);
@@ -48,6 +61,7 @@ app.use("/profile", profilePage);
 app.use("/cart", cartPage);
 app.use("/categories", categories);
 app.use("/product", product);
+app.use("/createdBy", createdBy);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
