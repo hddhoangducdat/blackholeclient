@@ -1,24 +1,24 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-  Name: String,
-  Code: String,
-  Metatitle: String,
-  Description: String,
-  Producer: String,
-  Images: [],
-  Price: String,
-  PromotionPrice: String,
-  IncludedVAT: String,
-  Quantity: String,
-  CategoryUrl: String,
-  Category: String,
-  Detail: String,
-  CreatedDate: String,
-  CreatedBy: String,
-  ModifiedBy: String,
-  ModifiedDate: String,
-  MetaKeywords: String
+  name: String,
+  code: String,
+  metatitle: String,
+  description: String,
+  producer: String,
+  images: [],
+  price: String,
+  promotionPrice: String,
+  includedVAT: String,
+  quantity: String,
+  categoryUrl: String,
+  category: String,
+  detail: String,
+  createdDate: String,
+  createdBy: String,
+  modifiedBy: String,
+  modifiedDate: String,
+  metaKeywords: String
 });
 
 module.exports = mongoose.model("product", productSchema, "product");
