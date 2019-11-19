@@ -23,6 +23,9 @@ var createdBy = require("./routes/createdBy");
 var app = express();
 dotenv.config();
 
+const dbUrl =
+  "mongodb+srv://hddhoangducdat:83400319a@black-hole-wz8hs.mongodb.net/BlackHoleShop?retryWrites=true&w=majority";
+
 // view engine setup
 app.engine(
   "hbs",
@@ -45,7 +48,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 const db = mongoose.connect(
-  process.env.CONNECTION_STRING,
+  dbUrl,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("db connected !");
