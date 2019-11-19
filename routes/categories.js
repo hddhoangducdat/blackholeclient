@@ -8,26 +8,29 @@ var productModel = require("../models/productModel");
 router.get("/:type", async (req, res) => {
   let type;
   switch (req.params.type) {
-    case "Thời%20trang":
+    case "fashion":
       type = "Thời trang";
       break;
-    case "Thể%20thao":
+    case "sport":
       type = "Thể thao";
       break;
-    case "Điện%20tử":
+    case "electronic":
       type = "Điện tử";
       break;
-    case "Nhà%20cửa%20-%20đời%20sống":
+    case "lifestyle":
       type = "Nhà cửa - đời sống";
       break;
-    case "Phụ%20kiện%20-%20thiết%20bị%20số":
+    case "toolkit":
       type = "Phụ kiện - thiết bị số";
       break;
-    case "Phương%20tiện":
+    case "transport":
       type = "Phương tiện";
       break;
-    case "Sách":
+    case "book":
       type = "Sách";
+      break;
+    case "food":
+      type = "Thực phẩm";
       break;
     default:
       break;

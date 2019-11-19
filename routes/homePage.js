@@ -6,7 +6,6 @@ var router = express.Router();
 router.get("/", async (req, res) => {
   const carts = await productModel.find();
   //res.send(carts);
-  console.log(carts);
   res.render("homePage", {
     title: "Black Hole",
     condition: false,
