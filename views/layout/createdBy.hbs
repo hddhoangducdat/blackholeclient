@@ -94,20 +94,20 @@
             {{#each carts}}
             <div class="card">
                 <div class="image">
-                    <img src={{this.Images}}>
+                    <img src={{this.images}}>
                 </div>
                 <div class="content">
                     <div class="header">
                         <a href="/product/{{this._id}}">
-                            {{this.Name}}
+                            {{this.name}}
                         </a>
                     </div>
                     <div class="meta">
-                        <a href="/categories/fashion">{{this.Category}}</a>from
-                        <a href="/CreatedBy">{{this.CreatedBy}}</a>
+                        <a href={{this.categoryUrl}}>{{this.category}}</a>from
+                        <a href="/CreatedBy/{{this.createdBy}}">{{this.createdBy}}</a>
                     </div>
                     <div class="description">
-                        {{this.Price}}
+                        {{this.price}}
                     </div>
                 </div>
                 <div class="extra content">

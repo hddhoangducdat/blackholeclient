@@ -37,7 +37,7 @@ router.get('/:type', async (req, res) => {
   }
   if (type) {
     const carts = await productModel.find({
-      Category: type
+      category: type
     });
     res.render('categories', {
       title: 'Black Hole',
