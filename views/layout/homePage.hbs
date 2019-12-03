@@ -60,17 +60,32 @@
                             </i> Lịch sử
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile" onclick="scrollToDownload()">
-                            <i class="material-icons">person_pin
-                            </i> Trang cá nhân
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/" onclick="scrollToDownload()">
-                            <i class="material-icons">exit_to_app</i>
-                        </a>
-                    </li>
+                    {{#if user}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile" onclick="scrollToDownload()">
+                                <i class="material-icons">person_pin
+                                </i> {{user.lastName}}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">
+                                <i class="material-icons">exit_to_app</i> Logout
+                            </a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login" onclick="scrollToDownload()">
+                                <i class="material-icons">lock_open
+                                </i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup" onclick="scrollToDownload()">
+                                <i class="material-icons">assignment
+                                </i> Register
+                            </a>
+                        </li>
+                    {{/if}}
                     <li class="nav-item">
                         <form class="form-inline ml-auto">
                             <div class="form-group no-border">
