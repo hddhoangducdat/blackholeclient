@@ -48,6 +48,7 @@
                             </a>
                         </div>
                     </li>
+                    {{#if user}}
                     <li class="nav-item">
                         <a class="nav-link" href="/cart" onclick="scrollToDownload()">
                             <i class="material-icons">shopping_cart</i> Giỏ hàng
@@ -60,16 +61,30 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="scrollToDownload()">
+                        <a class="nav-link" href="/profile" onclick="scrollToDownload()">
                             <i class="material-icons">person_pin
-                            </i> Trang cá nhân
+                            </i> {{user.lastName}}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/" onclick="scrollToDownload()">
-                            <i class="material-icons">exit_to_app</i>
+                        <a class="nav-link" href="/logout">
+                            <i class="material-icons">exit_to_app</i> Logout
                         </a>
                     </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" onclick="scrollToDownload()">
+                            <i class="material-icons">lock_open
+                            </i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup" onclick="scrollToDownload()">
+                            <i class="material-icons">assignment
+                            </i> Register
+                        </a>
+                    </li>
+                    {{/if}}
                     <li class="nav-item">
                         <form class="form-inline ml-auto">
                             <div class="form-group no-border">
@@ -93,20 +108,31 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="avatar">
+                                {{#if profile.picture}}
                                 <img src={{profile.picture}} alt="Circle Image"
                                     class="img-raised rounded-circle img-fluid">
+                                {{else}}
+                                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"
+                                    alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                {{/if}}
                             </div>
                             <div class="name">
-                                <h2 class="title">{{profile.name}}</h2>
+                                <h2 class="title">{{user.firstName}}{{user.lastName}}</h2>
+                                {{#if profile.phone}}
                                 <h4>{{profile.phone}}</h4>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="description text-center">
+                    {{#if profile.sex}}
                     <p>Giới tính: {{profile.sex}}</p>
+                    {{/if}}
+                    {{#if profile.address}}
                     <p>Địa chỉ: {{profile.address}}</p>
-                    <p>Email: {{profile.email}}</p>
+                    {{/if}}
+                    <p>Email: {{user.email}}</p>
                 </div>
                 <br /> <br />
                 <div class="row">
@@ -115,37 +141,45 @@
                         <h3>
                             THAY ĐỔI THÔNG TIN CÁ NHÂN
                         </h3>
-                        <div class="ui form">
+                        <form id="form" class="ui form">
                             <div class="two fields">
                                 <div class="field">
-                                    <label>Họ và tên</label>
-                                    <input type="text" placeholder="Họ và tên">
+                                    <label>Họ</label>
+                                    <input type="text" name="firstName" placeholder="Họ">
                                 </div>
                                 <div class="field">
-                                    <label>Địa chỉ</label>
-                                    <input type="text" placeholder="Địa chỉ">
+                                    <label>Tên</label>
+                                    <input type="text" name="lastName" placeholder="Tên">
                                 </div>
+                            </div>
+                            <div class="field">
+                                <label>Địa chỉ</label>
+                                <input type="text" name="address" placeholder="Địa chỉ">
                             </div>
                             <div class="three fields">
                                 <div class="field">
                                     <label>Giới tính</label>
-                                    <input type="text" placeholder="Giới tính">
+                                    <input type="text" name="sex" placeholder="Giới tính">
                                 </div>
                                 <div class="field">
                                     <label>Số điện thoại</label>
-                                    <input type="text" placeholder="Số điện thoại">
+                                    <input type="text" name="phone" placeholder="Số điện thoại">
                                 </div>
                                 <div class="field">
                                     <label>Email</label>
-                                    <input type="text" placeholder="Email">
+                                    <input type="text" name="email" placeholder="Email">
                                 </div>
                             </div>
                             <button class="ui button primary">Thay đổi</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <br /> <br />
     </div>
+
+    <script src="js/updateProfile.js">
+
+    </script>
 </body>

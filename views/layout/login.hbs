@@ -3,7 +3,7 @@
         id="sectionsNav">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/home">
                     BLACK HOLE
                 </a>
 
@@ -43,12 +43,13 @@
                                             <i class="material-icons">people</i>
                                         </span>
                                     </div>
-                                    <input type="text" name="username" class="form-control" placeholder="User Name..." required>
+                                    <input type="text" name="username" class="form-control" placeholder="User Name..."
+                                        required>
                                 </div>
                                 {{#if usernameWarning}}
-                                        <div style="margin-left: 53px" class="text-danger">
-                                            <span>{{usernameWarning}}</span>
-                                        </div>
+                                <div style="margin-left: 53px" class="text-danger">
+                                    <span>{{usernameWarning}}</span>
+                                </div>
                                 {{/if}}
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -56,16 +57,18 @@
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" name="password" class="form-control" placeholder="Password..." required>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Password..." required>
                                 </div>
                                 {{#if passwordWarning}}
-                                        <div style="margin-left: 53px" class="text-danger">
-                                            <span>{{passwordWarning}}</span>
-                                        </div>
+                                <div style="margin-left: 53px" class="text-danger">
+                                    <span>{{passwordWarning}}</span>
+                                </div>
                                 {{/if}}
                             </div>
-                             <div class="card-footer text-center">
-                                <input type="submit" value="Login" id="btnLogin" class="btn btn-primary btn-wd btn-lg"/>
+                            <div class="card-footer text-center">
+                                <input type="submit" value="Login" id="btnLogin"
+                                    class="btn btn-primary btn-wd btn-lg" />
                             </div>
 
                         </form>
