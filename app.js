@@ -16,7 +16,7 @@ const signup = require("./routes/signup");
 const homePage = require("./routes/homePage");
 const profilePage = require("./routes/profilePage");
 const historyPage = require("./routes/historyPage");
-const cartPage = require("./routes/cartPage");
+const cartRoute = require("./routes/cartRoute");
 const forgotPassword = require("./routes/forgotPassword");
 const categories = require("./routes/categories");
 const product = require("./routes/product");
@@ -47,7 +47,11 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser("keyboard cat"));
-app.use(expressSession({ cookie: { maxAge: 60000 } })); //60000ms ~ 60s
+app.use(expressSession({ 
+  resave: true,
+  saveUninitialized: true, 
+  cookie: { maxAge: 300000 }
+})); //300000ms ~ 300s ~ 5m
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 
@@ -72,7 +76,7 @@ app.use("/signup", signup(passport));
 app.use("/forgotPassword", forgotPassword);
 app.use("/history", historyPage);
 app.use("/profile", profilePage);
-app.use("/cart", cartPage);
+app.use("/cart", cartRoute);
 app.use("/categories", categories);
 app.use("/product", product);
 app.use("/createdBy", createdBy);
