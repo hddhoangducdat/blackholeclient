@@ -1,17 +1,11 @@
 $(document).ready(function() {
-  //init DateTimePickers
-  //materialKit.initFormExtendedDatetimepickers();
-
-  // Sliders Init
-  //materialKit.initSliders();
-
-  $(".addToCart").on("click", function() {
-    let cardId = $(this).data("id");
+  $(".removeItem").on("click", function() {
+    let productId = $(this).data("id");
     $.ajax({
-      url: "cart/addtocart",
+      url: "cart/removeItem",
       type: "POST",
       data: {
-        id: cardId
+        id: productId
       },
       beforeSend: function() {
         //console.log(this.data);

@@ -1,14 +1,8 @@
 $(document).ready(function() {
-  //init DateTimePickers
-  //materialKit.initFormExtendedDatetimepickers();
-
-  // Sliders Init
-  //materialKit.initSliders();
-
-  $(".addToCart").on("click", function() {
-    let cardId = $(this).data("id");
+  $(".deleteBill").on("click", function() {
+    let billId = $(this).data("id");
     $.ajax({
-      url: "cart/addtocart",
+      url: "history/cancleBill",
       type: "POST",
       data: {
         id: cardId

@@ -118,6 +118,7 @@ exports.product_sort_list = layout => async (req, res) => {
     condition: false,
     user: req.user,
     params,
+    render: true,
     carousel: [
       {
         cartId: 1,
