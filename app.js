@@ -35,23 +35,24 @@ app.engine(
   hbs({
     extname: "hbs",
     defaultLayout: "layout",
-    layoutsDir: __dirname + "/views/layout"
+    layoutsDir: __dirname + "/views"
   })
 );
-app.set("views", path.join(__dirname, "views/layout"));
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-handlebars.registerPartials(path.join(__dirname, "views/partials"));
 
 app.use(favicon());
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser("keyboard cat"));
-app.use(expressSession({ 
-  resave: true,
-  saveUninitialized: true, 
-  cookie: { maxAge: 300000 }
-})); //300000ms ~ 300s ~ 5m
+app.use(
+  expressSession({
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 300000 }
+  })
+); //300000ms ~ 300s ~ 5m
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 
