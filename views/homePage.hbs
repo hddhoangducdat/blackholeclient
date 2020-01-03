@@ -102,22 +102,26 @@
             {{#each carousel}}
             {{#if this.condition}}
             <div class="carousel-item active">
-                <a href="/product">
-                    <img class="d-block w-100" src={{this.picture}} alt="First slide">
+                <a href="/product/{{this._id}}">
+                    <img class="d-block w-100" src="{{this.images}}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h4>
-                            <h1>{{this.caption}}</h1>
+                            <div class="badge badge-primary text-wrap">
+                                <h1>{{this.name}}</h1>
+                            </div>
                         </h4>
                     </div>
                 </a>
             </div>
             {{else}}
             <div class="carousel-item">
-                <a href="/product">
-                    <img class="d-block w-100" src={{this.picture}} alt="First slide">
+                <a href="/product/{{this._id}}">
+                    <img class="d-block w-100" src="{{this.images}}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h4>
-                            <h1>{{this.caption}}</h1>
+                            <div class="badge badge-primary text-wrap">
+                                <h1>{{this.name}}</h1>
+                            </div>
                         </h4>
                     </div>
                 </a>
@@ -165,7 +169,7 @@
                     {{#each carts}}
                     <div class="card">
                         <div class="image">
-                            <img id="productImage-{{this._id}}" src={{this.images}}>
+                            <img id="productImage-{{this._id}}" src="{{this.images}}">
                         </div>
 
                         <div class="content">

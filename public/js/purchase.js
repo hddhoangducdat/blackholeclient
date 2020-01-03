@@ -13,7 +13,7 @@ $(document).ready(function() {
         //console.log(this.data);
       },
       success: function(res) {
-        window.location.href = res.redirect;
+        window.location.href = "/history";
       }
     });
   });

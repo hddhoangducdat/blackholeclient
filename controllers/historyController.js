@@ -32,7 +32,6 @@ exports.history_list = async (req, res) => {
       sum
     };
   });
-  console.log(result);
   res.render("historyPage", {
     title: "Black Hole",
     condition: response ? false : true,
@@ -44,7 +43,6 @@ exports.history_list = async (req, res) => {
 exports.purchase_product = async (req, res) => {
   let bill = await cartModel.findOne({ userId: req.user._id });
   if (bill && bill.carts.length !== 0) {
-    console.log(sum);
     let history = new historyModel({
       userId: req.user._id,
       history: "findItem",
@@ -57,7 +55,6 @@ exports.purchase_product = async (req, res) => {
 };
 
 exports.cancle_bill = async (req, res) => {
-  console.log("haha");
   let bill = await historyModel.findById(req.body.id);
   bill.history = "cancle";
   await bill.save();
