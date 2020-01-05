@@ -8,7 +8,7 @@ $(document).ready(function() {
   $(".addToCart").on("click", function() {
     let cardId = $(this).data("id");
     $.ajax({
-      url: "cart/addtocart",
+      url: "/cart/addtocart",
       type: "POST",
       data: {
         id: cardId

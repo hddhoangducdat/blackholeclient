@@ -5,7 +5,7 @@ $(document).ready(function() {
       url: "history/cancleBill",
       type: "POST",
       data: {
-        id: cardId
+        id: billId
       },
       beforeSend: function() {
         //console.log(this.data);

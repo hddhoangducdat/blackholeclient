@@ -51,6 +51,7 @@ exports.purchase_product = async (req, res) => {
     await history.save();
     bill.carts = [];
     await bill.save();
+    res.redirect("../history");
   }
 };
 
@@ -58,4 +59,5 @@ exports.cancle_bill = async (req, res) => {
   let bill = await historyModel.findById(req.body.id);
   bill.history = "cancle";
   await bill.save();
+  res.redirect("../history");
 };

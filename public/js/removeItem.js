@@ -1,6 +1,12 @@
 $(document).ready(function() {
   $(".removeItem").on("click", function() {
     let productId = $(this).data("id");
+    const price = $(this).data("price");
+    const number = $(this).data("number");
+    $(`#${productId}-cart`).html("<div><div>");
+    $("#sumProduct").text((i, origin) => {
+      return Number(origin) - price * number;
+    });
     $.ajax({
       url: "cart/removeItem",
       type: "POST",
@@ -10,9 +16,7 @@ $(document).ready(function() {
       beforeSend: function() {
         //console.log(this.data);
       },
-      success: function(res) {
-        window.location.href = "/cart";
-      }
+      success: function(res) {}
     });
   });
 

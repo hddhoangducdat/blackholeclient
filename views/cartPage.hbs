@@ -112,7 +112,7 @@
         <div class="section text-center">
             <div class="row">
                 <div class="col-md-4">
-                    <h2 class="card-title">Tiền đặt hàng : {{sum}}đ</h2>
+                    <h2 class="card-title">Tiền đặt hàng : <span id="sumProduct">{{sum}}</span>đ</h2>
                     <br />
                     <button id="purchase" class="ui button red">Tiến hành đặt hàng</button>
                 </div>
@@ -122,7 +122,7 @@
                         <div class="row">
                             <div class="ui special cards">
                                 {{#each carts}}
-                                <div class="col-md-4">
+                                <div id="{{this._id}}-cart" class="col-md-4">
                                     <div class="team-player">
                                         <div class="card card-plain">
                                             <div class="blurring dimmable image">
@@ -147,7 +147,7 @@
 
                                                 </h4>
                                             </a>
-                                            <a href="/categories/sport">
+                                            <a href="/categories/{{this.category}}">
                                                 <div class="card-description text-muted">{{this.type}}</div>
                                             </a>
                                             <div class="card-body">
@@ -158,16 +158,19 @@
                                             </div>
                                             <div class="card-footer justify-content-center">
 
-                                                <button class="ui button tiny">
+                                                <button class="increaseButton ui button tiny" data-id={{this._id}}
+                                                    data-price={{this.price}}>
                                                     <i class="plus  icon tiny"></i>
                                                 </button>
-                                                <div class="ui button blue tiny">
+                                                <div id="{{this._id}}-number" class="ui button blue tiny">
                                                     {{this.number}}
                                                 </div>
-                                                <button class="ui button tiny">
+                                                <button class="decreaseButton ui button tiny" data-id={{this._id}}
+                                                    data-price={{this.price}}>
                                                     <i class="minus icon tiny"></i>
                                                 </button>
-                                                <button class="ui button red tiny removeItem" data-id={{this._id}}>
+                                                <button class="ui button red tiny removeItem" data-id={{this._id}}
+                                                    data-price={{this.price}} data-number={{this.number}}>
                                                     Xóa
                                                 </button>
                                             </div>
