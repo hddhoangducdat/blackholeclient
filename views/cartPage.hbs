@@ -1,4 +1,4 @@
-<body>
+<body id="page-top">
     <nav class="navbar fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
         <div class="container">
             <div class="navbar-translate">
@@ -86,16 +86,20 @@
                     </li>
                     {{/if}}
 
-                    <li class="nav-item">
-                        <form class="form-inline ml-auto">
+                    <form id="dropdownMenuOffset" class="form-inline ml-auto">
+                        <div class="dropdown mr-1">
                             <div class="form-group no-border">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm">
+                                <input id="searchInput" type="text" class="dropdown-toggle form-control"
+                                    placeholder="Tìm kiếm" aria-label="Search" aria-describedby="basic-addon2"
+                                    aria-haspopup="true" aria-expanded="false" data-offset="10,20" autocomplete="off">
                             </div>
-                            <button type="submit" class="btn btn-white btn-just-icon btn-round">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </form>
-                    </li>
+                            <div id="dropdownItem" class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-white btn-just-icon btn-round">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
                 </ul>
             </div>
         </div>
@@ -202,5 +206,6 @@
     <script src="../js/material-kit.js?v=2.0.6" type="text/javascript"></script>
     <script src="../js/purchase.js"></script>
     <script src="../js/removeItem.js"></script>
+    <script src="../js/search.js"></script>
 
 </body>

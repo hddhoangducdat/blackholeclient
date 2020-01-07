@@ -1,4 +1,6 @@
 const productModel = require("../models/productModel");
+var httpMsgs = require("http-msgs");
+var commentModel = require("../models/commentModel");
 
 exports.product_list = layout => async (req, res) => {
   const carts = await productModel.find();
@@ -34,10 +36,13 @@ exports.product_list_categories = layout => async (req, res) => {
 exports.product_info = layout => async (req, res) => {
   // var id = url.substring(url.lastIndexOf("/") + 1);
   const carts = await productModel.findById(req.params.id);
+  const comment = await commentModel.findOne({ productId: req.params.id });
+  console.log(comment);
   res.render(layout, {
     title: "Black Hole",
     user: req.user,
-    product: carts
+    product: carts,
+    comment: comment ? comment.comments : null
   });
 };
 
@@ -111,4 +116,48 @@ exports.product_sort_categories = layout => async (req, res) => {
     condition: false,
     carts
   });
+};
+
+exports.search_product = async (req, res) => {
+  let search = req.body.search.toLowerCase();
+  const product = await productModel.find();
+  let arr = [];
+  product.forEach((p, i) => {
+    var vtr = p.name.toLowerCase().search(search);
+    if (vtr !== -1) arr = [...arr, { name: p.name, href: `/product/${p._id}` }];
+  });
+  console.log(arr);
+  httpMsgs.sendJSON(req, res, {
+    arr
+  });
+};
+
+exports.product_comment = async (req, res) => {
+  console.log(req.body.comment);
+  console.log(req.params.id);
+  let comment = await commentModel.findOne({ productId: req.params.id });
+  if (comment) {
+    comment.comments = [
+      ...comment.comments,
+      {
+        text: req.body.comment,
+        image: req.user.image,
+        name: req.user.username
+      }
+    ];
+    await comment.save();
+  } else {
+    let newComment = new commentModel({
+      productId: req.params.id,
+      comments: [
+        {
+          text: req.body.comment,
+          image: req.user.image,
+          name: req.user.username
+        }
+      ]
+    });
+    newComment.save();
+  }
+  res.redirect(`/product/${req.params.id}`);
 };

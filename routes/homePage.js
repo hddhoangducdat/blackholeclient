@@ -7,5 +7,6 @@ const router = express.Router();
 router.get("/", productController.product_list("homePage"));
 
 router.get("/home/:sort", productController.product_sort_list("homePage"));
+router.post("/search", productController.search_product);
 
 module.exports = router;
