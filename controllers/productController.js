@@ -38,15 +38,16 @@ exports.product_info = layout => async (req, res) => {
   const carts = await productModel.findById(req.params.id);
   const comment = await commentModel.findOne({ productId: req.params.id });
   let product = await productModel.find({
-    sellerId: carts.sellerId
+    createdBy: carts.createdBy
   });
   let result = product.concat(
     await productModel.find({
       category: carts.category
     })
   );
+  console.log(result);
+  result = result.filter(r => !r._id.equals(req.params.id));
   while (result.length > 5) result.pop();
-  console.log(comment);
   res.render(layout, {
     title: "Black Hole",
     user: req.user,
