@@ -159,6 +159,38 @@
 
         <br />
         <br />
+        <h2>Mặt hàng bạn có thể quan tâm</h2>
+        <div class="ui link cards centered grid">
+            {{#each carts}}
+            <div class="card">
+                <div class="image">
+                    <img id="productImage-{{this._id}}" src="{{this.images}}">
+                </div>
+
+                <div class="content">
+                    <a href="/product/{{this._id}}">
+                        <div class="header" id="productName-{{this._id}}">{{this.name}}</div>
+                    </a>
+                    <div class="meta">
+                        <a href="/categories/{{this.category}}">{{this.productName}}</a>from
+                        <a href="/CreatedBy/{{this.createdBy}}">{{this.createdBy}}</a>
+                    </div>
+                    <div class="description" id="productPrice-{{this._id}}">{{this.price}}</div>
+                </div>
+                <div class="extra content">
+                    <span class="addToCart" data-id={{this._id}}>
+                        <a>
+                            <i class="cart icon"></i>
+                            Add to cart
+                        </a>
+                    </span>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <br />
+        <br />
 
         <form id="formSubmit" action="/product/comment/{{product._id}}" class="ui form" method="POST"
             data-image={{user.image}} data-name={{user.name}}>
@@ -197,5 +229,6 @@
         <script src="../../js/material-kit.js?v=2.0.6" type="text/javascript"></script>
         <script src="../../js/productPage.js"></script>
         <script src="../../js/search.js"></script>
+        <srcipt src="../../js/cart.js"></srcipt>
 
 </body>

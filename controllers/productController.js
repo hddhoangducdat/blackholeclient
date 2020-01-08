@@ -37,12 +37,22 @@ exports.product_info = layout => async (req, res) => {
   // var id = url.substring(url.lastIndexOf("/") + 1);
   const carts = await productModel.findById(req.params.id);
   const comment = await commentModel.findOne({ productId: req.params.id });
+  let product = await productModel.find({
+    sellerId: carts.sellerId
+  });
+  let result = product.concat(
+    await productModel.find({
+      category: carts.category
+    })
+  );
+  while (result.length > 5) result.pop();
   console.log(comment);
   res.render(layout, {
     title: "Black Hole",
     user: req.user,
     product: carts,
-    comment: comment ? comment.comments : null
+    comment: comment ? comment.comments : null,
+    carts: result
   });
 };
 
